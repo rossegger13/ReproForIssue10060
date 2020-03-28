@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TestProject.MainPage"
+             ControlTemplate="{StaticResource myTemplate}">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout x:Name="theStack">
+                    <CollectionView ItemsSource="{Binding MyItems}"
+                          VerticalOptions="FillAndExpand"
+                      x:Name="ListViewShoppingBasket">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <!--<ViewCell>-->
+                                    <Frame HeightRequest="120">
+                                        <Grid BackgroundColor="GhostWhite">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50"/>
+                                                <RowDefinition Height="50"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="200"/>
+                                            </Grid.ColumnDefinitions>
+
+
+                                            <Label Text="{Binding Id}"
+                                                   TextColor="Black"
+                                                    FontSize="Medium"
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    VerticalTextAlignment="Center"/>
+
+                                            <Label Text="{Binding Name}"
+                                               TextColor="Black"
+                                           FontSize="Medium"
+                                           Grid.Row="0"
+                                           Grid.Column="1"
+                                           VerticalTextAlignment="Center"/>
+
+                                            <Label Text="{Binding Description}"
+                                                   TextColor="Black"
+                                                   FontSize="Medium"
+                                                   Grid.Row="0"
+                                                   Grid.Column="2"
+                                                   VerticalTextAlignment="Center"/>
+
+                                         
+
+
+                                            <Button Text="Löschen"
+                                                TextColor="Black"
+                                                CornerRadius="7"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="CenterAndExpand"
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                Margin="5"
+                                                CommandParameter="{Binding Id}"
+                                                Clicked="DeleteButton_Clicked"/>
+                                        </Grid>
+                                    </Frame>
+                                <!--</ViewCell>-->
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Grid BackgroundColor="Lime" Margin="20" Padding="3">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Some random Text"
+                               FontSize="Medium"
+                               TextColor="Red"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               HorizontalOptions="StartAndExpand"/>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
